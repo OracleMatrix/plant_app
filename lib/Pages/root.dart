@@ -7,6 +7,7 @@ import 'package:plant_app/Pages/home_page.dart';
 import 'package:plant_app/Pages/profile_page.dart';
 import 'package:plant_app/Pages/scan_page.dart';
 import 'package:plant_app/consts/constants.dart';
+import 'package:plant_app/models/plant.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -16,13 +17,22 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  List<Plant> favorites = [];
+  List<Plant> myCart = [];
+
   int bottomIndex = 0;
-  List<Widget> pages = const [
-    HomePage(),
-    FavoritPage(),
-    CartPage(),
-    ProfilePage(),
-  ];
+  List<Widget> pages() {
+    return [
+      const HomePage(),
+      FavoritPage(
+        favortiedPlants: favorites,
+      ),
+      CartPage(
+        addedToCartPlants: myCart,
+      ),
+      const ProfilePage(),
+    ];
+  }
 
   List<IconData> iconsList = [
     Icons.home,
@@ -68,7 +78,7 @@ class _RootPageState extends State<RootPage> {
         ),
         body: IndexedStack(
           index: bottomIndex,
-          children: pages,
+          children: pages(),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
@@ -99,6 +109,10 @@ class _RootPageState extends State<RootPage> {
           onTap: (p0) {
             setState(() {
               bottomIndex = p0;
+              final List<Plant> favaritedPlants = Plant.getFavoritedPlants();
+              final List<Plant> addedToCartPlants = Plant.addedToCartPlants();
+              favorites = favaritedPlants.toSet().toList();
+              myCart = addedToCartPlants.toSet().toList();
             });
           },
         ),

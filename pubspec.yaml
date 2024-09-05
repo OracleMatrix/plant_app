@@ -79,11 +79,6 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: khandevane
-      fonts:
-        - asset: assets/fonts/Khandevane.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
     - family: Lalezar
       fonts:
         - asset: assets/fonts/Lalezar-Regular.ttf

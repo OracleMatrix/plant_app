@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:plant_app/Pages/cart_page.dart';
 import 'package:plant_app/Widgets/extension.dart';
 import 'package:plant_app/consts/constants.dart';
 import 'package:plant_app/models/plant.dart';
@@ -12,6 +14,10 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  bool toggleIsSelected(bool isSelected) {
+    return !isSelected;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -229,30 +235,23 @@ class _DetailPageState extends State<DetailPage> {
         height: 50,
         child: Row(
           children: [
-            Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, 1),
-                    blurRadius: 5,
-                    color: Constants.primaryColor.withOpacity(0.3),
-                  ),
-                ],
-                shape: BoxShape.circle,
-                color: Constants.primaryColor.withOpacity(0.5),
-              ),
-              child: const Icon(
-                Icons.shopping_cart,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(width: 20),
-            Expanded(
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                      child: CartPage(
+                          addedToCartPlants: plantList
+                              .where(
+                                (element) => element.isSelected,
+                              )
+                              .toList()),
+                      type: PageTransitionType.fade),
+                );
+              },
               child: Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(10),
+                height: 50,
+                width: 50,
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -261,15 +260,46 @@ class _DetailPageState extends State<DetailPage> {
                       color: Constants.primaryColor.withOpacity(0.3),
                     ),
                   ],
-                  borderRadius: BorderRadius.circular(10),
-                  color: Constants.primaryColor,
+                  shape: BoxShape.circle,
+                  color: Constants.primaryColor.withOpacity(0.5),
                 ),
-                child: const Text(
-                  "افزودن به سبد خرید",
-                  style: TextStyle(
-                    fontFamily: "Lalezar",
-                    color: Colors.white,
-                    fontSize: 20,
+                child: const Icon(
+                  Icons.shopping_cart,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    bool isSelected =
+                        toggleIsSelected(plantList[widget.plantId].isSelected);
+                    plantList[widget.plantId].isSelected = isSelected;
+                  });
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        offset: const Offset(0, 1),
+                        blurRadius: 5,
+                        color: Constants.primaryColor.withOpacity(0.3),
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                    color: Constants.primaryColor,
+                  ),
+                  child: const Text(
+                    "افزودن به سبد خرید",
+                    style: TextStyle(
+                      fontFamily: "Lalezar",
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),

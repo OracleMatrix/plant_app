@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:plant_app/Pages/camera_overlay.dart';
+import 'package:plant_app/Widgets/camera_overlay.dart';
 import 'package:plant_app/consts/constants.dart';
 
 class CameraPage extends StatefulWidget {

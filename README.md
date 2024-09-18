@@ -14,7 +14,6 @@
 | ![alt text](Screenshot_1725568636.png) | ![alt text](Screenshot_1725568694.png) | ![alt text](Screenshot_1725568705.png) |
 | ![alt text](Screenshot_1725568714.png) | ![alt text](Screenshot_1725568727.png) | ![alt text](Screenshot_1725569556.png) |
 
-
 ## Getting Started
 1. Clone the repository: git clone https://github.com/OracleMatrix/plant_app.git
 2. Open the project in your preferred IDE (e.g. Android Studio, Visual Studio Code)

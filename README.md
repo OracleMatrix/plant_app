@@ -8,9 +8,9 @@
 * Different Categories
 
 ## ScreenShots
-| Plant App |
+| Plant App | | --- | | --- |
 |---|---|---|
-| ![alt text](Screenshot_1725568688.png) | | ![alt text](Screenshot_1725568688.png) | | ![alt text](Screenshot_1725568647.png) |
+| ![alt text](Screenshot_1725568688.png) | | ![alt text](Screenshot_1725568647.png) |
 | ![alt text](Screenshot_1725568632.png) | | ![alt text](Screenshot_1725568636.png) | | ![alt text](Screenshot_1725568694.png) |
 | ![alt text](Screenshot_1725568705.png) | | ![alt text](Screenshot_1725568714.png) | | ![alt text](Screenshot_1725568727.png) |
 | ![alt text](Screenshot_1725569556.png) |
